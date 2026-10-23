@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Valorix | Phase Two: Full Throttle</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0a0a0a;
+    }
+    .font-orbitron {
+      font-family: 'Orbitron', sans-serif;
+    }
+    .racing-gradient {
+      background: linear-gradient(135deg, #1a0000 0%, #0a0a0a 50%, #001a2e 100%);
+    }
+    .glow-box {
+      box-shadow: 0 0 20px rgba(255, 42, 42, 0.3);
+    }
+    .checkered {
+      background-image: 
+        linear-gradient(45deg, #222 25%, transparent 25%), 
+        linear-gradient(-45deg, #222 25%, transparent 25%), 
+        linear-gradient(45deg, transparent 75%, #222 75%), 
+        linear-gradient(-45deg, transparent 75%, #222 75%);
+      background-size: 20px 20px;
+      background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+    }
+  </style>
+</head>
+<body class="text-white racing-gradient min-h-screen">
+
+  <!-- Navbar -->
+  <nav class="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-md border-b border-red-900/50">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+      <div class="font-orbitron text-xl font-bold tracking-wider">
+        <span class="text-red-500">VALORIX</span>
+      </div>
+      <div class="hidden md:flex gap-6 text-sm font-medium">
+        <a href="#about" class="hover:text-red-400 transition">About</a>
+        <a href="#events" class="hover:text-red-400 transition">Events</a>
+        <a href="#coordinators" class="hover:text-red-400 transition">Team</a>
+        <a href="#register" class="hover:text-red-400 transition">Register</a>
+      </div>
+      <a href="#register" class="bg-red-600 hover:bg-red-700 px-4 py-2 rounded-full text-sm font-semibold transition">
+        Register
+      </a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="pt-20 pb-12 px-4 relative overflow-hidden">
+    <div class="absolute inset-0 checkered opacity-10"></div>
+    
+    <div class="max-w-5xl mx-auto relative z-10">
+      
+      <!-- Poster Image -->
+      <div class="rounded-2xl overflow-hidden shadow-2xl border border-red-900/50 mb-8 glow-box">
+        <img src="poster.jpg" 
+             alt="Valorix Phase Two Full Throttle" 
+             class="w-full h-auto object-cover">
+      </div>
+
+      <!-- Prize + Date -->
+      <div class="flex flex-wrap justify-center gap-4 sm:gap-6 mb-8">
+        <div class="bg-black/60 border border-red-800 rounded-2xl px-6 py-4 sm:px-8 sm:py-5 glow-box">
+          <p class="text-sm text-gray-400">Prize Pool</p>
+          <p class="font-orbitron text-2xl sm:text-3xl font-bold text-yellow-400">₹70K+</p>
+        </div>
+        <div class="bg-black/60 border border-red-800 rounded-2xl px-6 py-4 sm:px-8 sm:py-5 glow-box">
+          <p class="text-sm text-gray-400">Date</p>
+          <p class="font-orbitron text-2xl sm:text-3xl font-bold">03 DEC 2026</p>
+        </div>
+      </div>
+
+      <!-- Countdown -->
+      <div id="countdown" class="flex justify-center gap-3 sm:gap-6 mb-8">
+        <div class="bg-red-950/50 border border-red-700 rounded-xl px-4 py-3 min-w-[65px] sm:min-w-[70px]">
+          <div id="days" class="font-orbitron text-2xl sm:text-3xl font-bold">00</div>
+          <div class="text-xs text-gray-400">DAYS</div>
+        </div>
+        <div class="bg-red-950/50 border border-red-700 rounded-xl px-4 py-3 min-w-[65px] sm:min-w-[70px]">
+          <div id="hours" class="font-orbitron text-2xl sm:text-3xl font-bold">00</div>
+          <div class="text-xs text-gray-400">HOURS</div>
+        </div>
+        <div class="bg-red-950/50 border border-red-700 rounded-xl px-4 py-3 min-w-[65px] sm:min-w-[70px]">
+          <div id="minutes" class="font-orbitron text-2xl sm:text-3xl font-bold">00</div>
+          <div class="text-xs text-gray-400">MINS</div>
+        </div>
+        <div class="bg-red-950/50 border border-red-700 rounded-xl px-4 py-3 min-w-[65px] sm:min-w-[70px]">
+          <div id="seconds" class="font-orbitron text-2xl sm:text-3xl font-bold">00</div>
+          <div class="text-xs text-gray-400">SECS</div>
+        </div>
+      </div>
+
+      <div class="text-center">
+        <a href="#register" class="inline-block bg-red-600 hover:bg-red-700 text-white font-bold px-8 py-3.5 sm:px-10 sm:py-4 rounded-full text-base sm:text-lg transition transform hover:scale-105">
+          REGISTER NOW
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="py-14 px-4 bg-black/40">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="font-orbitron text-2xl sm:text-3xl font-bold mb-6">WHAT IS VALORIX?</h2>
+      <p class="text-gray-300 leading-relaxed text-base sm:text-lg">
+        The race is about to begin, and this time, there are no limits. Inspired by the adrenaline, 
+        speed, and fierce competition of Formula 1, <span class="text-red-400 font-semibold">Valorix – Full Throttle</span> 
+        brings together brilliant minds, bold talents, and passionate competitors for an unforgettable experience. 
+        Every challenge is a new lap, every decision a strategic move, and every moment an opportunity to rise above the rest.
+      </p>
+      <p class="text-gray-400 mt-4 text-base sm:text-lg">
+        Buckle up, embrace the adrenaline, and get ready to go <span class="text-red-500 font-bold">FULL THROTTLE!</span>
+      </p>
+    </div>
+  </section>
+
+  <!-- Events -->
+  <section id="events" class="py-14 px-4">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="font-orbitron text-2xl sm:text-3xl font-bold text-center mb-10">EVENTS & PRIZES</h2>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        
+        <!-- School Events -->
+        <div class="bg-gradient-to-b from-red-950/40 to-black border border-red-900/50 rounded-2xl p-5 sm:p-6">
+          <h3 class="font-orbitron text-lg sm:text-xl font-bold text-center mb-5 text-yellow-400">FOR SCHOOL STUDENTS</h3>
+          <div class="space-y-3">
+            <div class="flex justify-between items-center bg-black/50 rounded-xl px-4 py-3">
+              <span class="font-medium text-sm sm:text-base">3×3 Football</span>
+              <span class="text-xs sm:text-sm text-gray-300">1st ₹4K • 2nd ₹2K</span>
+            </div>
+            <div class="flex justify-between items-center bg-black/50 rounded-xl px-4 py-3">
+              <span class="font-medium text-sm sm:text-base">Business Quiz</span>
+              <span class="text-xs sm:text-sm text-gray-300">1st ₹2.5K • 2nd ₹1.5K</span>
+            </div>
+            <div class="flex justify-between items-center bg-black/50 rounded-xl px-4 py-3">
+              <span class="font-medium text-sm sm:text-base">Group Dance</span>
+              <span class="text-xs sm:text-sm text-gray-300">1st ₹5K • 2nd ₹3K</span>
+            </div>
+            <div class="flex justify-between items-center bg-black/50 rounded-xl px-4 py-3">
+              <span class="font-medium text-sm sm:text-base">Spot Dance</span>
+              <span class="text-xs sm:text-sm text-gray-300">1st ₹3K • 2nd ₹1K</span>
+            </div>
+            <div class="flex justify-between items-center bg-black/50 rounded-xl px-4 py-3">
+              <span class="font-medium text-sm sm:text-base">Deal / No Deal</span>
+              <span class="text-xs sm:text-sm text-gray-300">1st ₹5K • 2nd ₹3K</span>
+            </div>
+            <div class="flex justify-between items-center bg-black/50 rounded-xl px-4 py-3">
+              <span class="font-medium text-sm sm:text-base">E-Football Game</span>
+              <span class="text-xs sm:text-sm text-gray-300">1st ₹2K • 2nd ₹1K</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- College Events -->
+        <div class="bg-gradient-to-b from-blue-950/40 to-black border border-blue-900/50 rounded-2xl p-5 sm:p-6">
+          <h3 class="font-orbitron text-lg sm:text-xl font-bold text-center mb-5 text-cyan-400">FOR COLLEGE STUDENTS</h3>
+          <div class="space-y-3">
+            <div class="flex justify-between items-center bg-black/50 rounded-xl px-4 py-3">
+              <span class="font-medium text-sm sm:text-base">3×3 Football</span>
+              <span class="text-xs sm:text-sm text-gray-300">1st ₹5K • 2nd ₹3K</span>
+            </div>
+            <div class="flex justify-between items-center bg-black/50 rounded-xl px-4 py-3">
+              <span class="font-medium text-sm sm:text-base">Spot Photography</span>
+              <span class="text-xs sm:text-sm text-gray-300">1st ₹2K • 2nd ₹1K</span>
+            </div>
+            <div class="flex justify-between items-center bg-black/50 rounded-xl px-4 py-3">
+              <span class="font-medium text-sm sm:text-base">Best Manager</span>
+              <span class="text-xs sm:text-sm text-gray-300">1st ₹4K • 2nd ₹2K</span>
+            </div>
+            <div class="flex justify-between items-center bg-black/50 rounded-xl px-4 py-3">
+              <span class="font-medium text-sm sm:text-base">Meme</span>
+              <span class="text-xs sm:text-sm text-gray-300">1st ₹2K</span>
+            </div>
+            <div class="flex justify-between items-center bg-black/50 rounded-xl px-4 py-3">
+              <span class="font-medium text-sm sm:text-base">Solve the Supply Chain</span>
+              <span class="text-xs sm:text-sm text-gray-300">1st ₹5K • 2nd ₹3K</span>
+            </div>
+            <div class="flex justify-between items-center bg-black/50 rounded-xl px-4 py-3">
+              <span class="font-medium text-sm sm:text-base">E-Football Game</span>
+              <span class="text-xs sm:text-sm text-gray-300">1st ₹2K • 2nd ₹1K</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Coordinators -->
+  <section id="coordinators" class="py-14 px-4 bg-black/40">
+    <div class="max-w-5xl mx-auto">
+      <h2 class="font-orbitron text-2xl sm:text-3xl font-bold text-center mb-10">OUR TEAM</h2>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 text-center">
+        <div class="bg-black/50 border border-red-900/40 rounded-xl p-4 sm:p-5">
+          <p class="text-xs text-gray-400 mb-1">PRINCIPAL</p>
+          <p class="font-semibold text-sm sm:text-base">Prof. Dr. Indulal G.</p>
+        </div>
+        <div class="bg-black/50 border border-red-900/40 rounded-xl p-4 sm:p-5">
+          <p class="text-xs text-gray-400 mb-1">HOD</p>
+          <p class="font-semibold text-sm sm:text-base">Ms. Leenet A Varghese</p>
+        </div>
+        <div class="bg-black/50 border border-red-900/40 rounded-xl p-4 sm:p-5">
+          <p class="text-xs text-gray-400 mb-1">PROGRAM COORDINATOR</p>
+          <p class="font-semibold text-sm sm:text-base">Ms. Rose Mary Mathew</p>
+        </div>
+        <div class="bg-black/50 border border-red-900/40 rounded-xl p-4 sm:p-5">
+          <p class="text-xs text-gray-400 mb-1">STUDENT COORDINATORS</p>
+          <p class="font-semibold text-sm sm:text-base">Adarsh A Reji<br>Neeraja R</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Register -->
+  <section id="register" class="py-14 px-4">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="font-orbitron text-2xl sm:text-3xl font-bold mb-4">READY TO RACE?</h2>
+      <p class="text-gray-300 mb-8">Register now and join the competition</p>
+      
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSfvI-oR7K2TSnQGDRyYLETd8HzewBf-ARMsBp9daJecBQbKIA/viewform?usp=publish-editor" 
+         target="_blank"
+         class="inline-flex items-center justify-center gap-2 bg-red-600 hover:bg-red-700 text-white font-bold px-8 py-4 rounded-full text-lg transition">
+        Register with Google Form
+      </a>
+
+      <div class="mt-12 pt-10 border-t border-red-900/40">
+        <p class="text-gray-400 mb-3">Follow us on Instagram</p>
+        <a href="https://instagram.com/VALORIX26" target="_blank" class="inline-flex items-center gap-2 text-red-400 hover:text-red-300 font-semibold text-lg">
+          @VALORIX26
+        </a>
+        <p class="text-sm text-gray-500 mt-6">St. Aloysius College, Edathua • Department of Commerce (Logistics)</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-6 text-center text-sm text-gray-500 border-t border-red-900/30">
+    <p>© 2026 Valorix • St. Aloysius College, Edathua</p>
+  </footer>
+
+  <!-- Countdown Script -->
+  <script>
+    const eventDate = new Date("2026-12-03T09:00:00").getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = eventDate - now;
+
+      if (distance < 0) {
+        document.getElementById("countdown").innerHTML = "<p class='text-xl sm:text-2xl font-bold text-red-500'>EVENT IS LIVE!</p>";
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById("days").textContent = days.toString().padStart(2, "0");
+      document.getElementById("hours").textContent = hours.toString().padStart(2, "0");
+      document.getElementById("minutes").textContent = minutes.toString().padStart(2, "0");
+      document.getElementById("seconds").textContent = seconds.toString().padStart(2, "0");
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
+</body>
+</html>
