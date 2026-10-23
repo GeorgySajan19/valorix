@@ -1,190 +1,297 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Valorix | Phase Two: Full Throttle</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     body {
       font-family: 'Inter', sans-serif;
-      background: #0a0a0a;
+      background: #050505;
+      color: #ffffff;
+      overflow-x: hidden;
     }
     .font-orbitron {
       font-family: 'Orbitron', sans-serif;
     }
     .racing-gradient {
-      background: linear-gradient(135deg, #1a0000 0%, #0a0a0a 50%, #001a2e 100%);
+      background: radial-gradient(circle at top center, rgba(185, 28, 28, 0.18) 0%, rgba(10, 10, 10, 1) 70%);
     }
-    .glow-box {
-      box-shadow: 0 0 20px rgba(255, 42, 42, 0.3);
+    .glow-red {
+      box-shadow: 0 0 25px rgba(220, 38, 38, 0.35);
+    }
+    .glow-red-lg {
+      box-shadow: 0 0 40px rgba(220, 38, 38, 0.25);
+    }
+    .glass-panel {
+      background: rgba(15, 15, 15, 0.75);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(239, 68, 68, 0.25);
+    }
+    .glass-panel:hover {
+      border-color: rgba(239, 68, 68, 0.5);
     }
     .checkered {
       background-image: 
-        linear-gradient(45deg, #222 25%, transparent 25%), 
-        linear-gradient(-45deg, #222 25%, transparent 25%), 
-        linear-gradient(45deg, transparent 75%, #222 75%), 
-        linear-gradient(-45deg, transparent 75%, #222 75%);
-      background-size: 20px 20px;
-      background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+        linear-gradient(45deg, rgba(255,255,255,0.03) 25%, transparent 25%), 
+        linear-gradient(-45deg, rgba(255,255,255,0.03) 25%, transparent 25%), 
+        linear-gradient(45deg, transparent 75%, rgba(255,255,255,0.03) 75%), 
+        linear-gradient(-45deg, transparent 75%, rgba(255,255,255,0.03) 75%);
+      background-size: 30px 30px;
+      background-position: 0 0, 0 15px, 15px -15px, -15px 0px;
+    }
+    .carousel-item {
+      opacity: 0;
+      transition: opacity 0.8s ease-in-out;
+      pointer-events: none;
+    }
+    .carousel-item.active {
+      opacity: 1;
+      pointer-events: auto;
     }
   </style>
 </head>
-<body class="text-white racing-gradient min-h-screen">
+<body class="racing-gradient min-h-screen antialiased selection:bg-red-600 selection:text-white">
 
   <!-- Navbar -->
-  <nav class="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-md border-b border-red-900/50">
-    <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
-      <div class="font-orbitron text-xl font-bold tracking-wider">
-        <span class="text-red-500">VALORIX</span>
-      </div>
-      <div class="hidden md:flex gap-6 text-sm font-medium">
-        <a href="#about" class="hover:text-red-400 transition">About</a>
-        <a href="#events" class="hover:text-red-400 transition">Events</a>
-        <a href="#coordinators" class="hover:text-red-400 transition">Team</a>
-        <a href="#register" class="hover:text-red-400 transition">Register</a>
-      </div>
-      <a href="#register" class="bg-red-600 hover:bg-red-700 px-4 py-2 rounded-full text-sm font-semibold transition">
-        Register
+  <nav class="fixed top-0 w-full z-50 bg-black/85 backdrop-blur-md border-b border-red-900/40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3.5 flex justify-between items-center">
+      <a href="#" class="font-orbitron text-xl sm:text-2xl font-black tracking-widest flex items-center gap-2">
+        <span class="text-red-600">VALORIX</span>
+        <span class="text-[10px] sm:text-xs bg-red-600/20 text-red-500 border border-red-500/30 px-2 py-0.5 rounded font-mono">2026</span>
       </a>
+
+      <!-- Desktop Links -->
+      <div class="hidden md:flex gap-8 text-sm font-semibold tracking-wide uppercase text-gray-300">
+        <a href="#about" class="hover:text-red-500 transition-colors">About</a>
+        <a href="#events" class="hover:text-red-500 transition-colors">Events</a>
+        <a href="#coordinators" class="hover:text-red-500 transition-colors">Team</a>
+        <a href="#register" class="hover:text-red-500 transition-colors">Register</a>
+      </div>
+
+      <div class="hidden md:block">
+        <a href="#register" class="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 px-6 py-2.5 rounded-full text-xs sm:text-sm font-bold tracking-wider uppercase shadow-lg shadow-red-900/50 transition transform hover:scale-105 active:scale-95 inline-block">
+          Register Now
+        </a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button id="menuBtn" class="md:hidden text-gray-300 hover:text-white p-2 focus:outline-none" aria-label="Toggle Navigation">
+        <svg id="menuIcon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobileMenu" class="hidden md:hidden bg-black/95 border-b border-red-900/40 px-6 py-4 flex flex-col gap-4 font-semibold text-sm uppercase tracking-wider text-gray-300">
+      <a href="#about" class="mobile-link hover:text-red-500">About</a>
+      <a href="#events" class="mobile-link hover:text-red-500">Events</a>
+      <a href="#coordinators" class="mobile-link hover:text-red-500">Team</a>
+      <a href="#register" class="mobile-link hover:text-red-500">Register</a>
+      <a href="#register" class="mobile-link bg-red-600 text-white text-center py-2.5 rounded-full font-bold">Register Now</a>
     </div>
   </nav>
 
   <!-- Hero Section -->
-  <section class="pt-20 pb-12 px-4 relative overflow-hidden">
-    <div class="absolute inset-0 checkered opacity-10"></div>
-    
-    <div class="max-w-5xl mx-auto relative z-10">
+  <section class="pt-24 sm:pt-28 pb-12 px-4 relative overflow-hidden">
+    <div class="absolute inset-0 checkered opacity-20 pointer-events-none"></div>
+
+    <div class="max-w-6xl mx-auto relative z-10">
       
-      <!-- Poster Image -->
-      <div class="rounded-2xl overflow-hidden shadow-2xl border border-red-900/50 mb-8 glow-box">
-        <img src="poster.jpg" 
-             alt="Valorix Phase Two Full Throttle" 
-             class="w-full h-auto object-cover">
+      <!-- Top Media Carousel -->
+      <div class="relative w-full aspect-[4/3] sm:aspect-[16/9] md:aspect-[21/9] rounded-2xl sm:rounded-3xl overflow-hidden glass-panel mb-8 sm:mb-10 glow-red-lg group">
+        
+        <!-- Slide 1: High Energy Video -->
+        <div class="carousel-item active absolute inset-0 w-full h-full">
+          <video autoplay loop muted playsinline class="w-full h-full object-cover">
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-sports-car-racing-on-a-track-40342-large.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-4 sm:p-6 md:p-10">
+            <span class="bg-red-600 text-white font-orbitron text-[10px] sm:text-xs tracking-widest uppercase px-2.5 py-1 rounded-full w-max mb-2">High Voltage</span>
+            <h3 class="font-orbitron text-xl sm:text-3xl md:text-4xl font-black text-white leading-tight">FEEL THE FULL THROTTLE</h3>
+          </div>
+        </div>
+
+        <!-- Slide 2: Image Poster -->
+        <div class="carousel-item absolute inset-0 w-full h-full">
+          <img src="poster.jpg" alt="Valorix Official Poster" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=1600&q=80'">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-4 sm:p-6 md:p-10">
+            <span class="bg-yellow-500 text-black font-orbitron text-[10px] sm:text-xs font-bold tracking-widest uppercase px-2.5 py-1 rounded-full w-max mb-2">Grand Arena</span>
+            <h3 class="font-orbitron text-xl sm:text-3xl md:text-4xl font-black text-white leading-tight">₹70,000+ CASH PRIZE POOL</h3>
+          </div>
+        </div>
+
+        <!-- Slide 3: Secondary Video -->
+        <div class="carousel-item absolute inset-0 w-full h-full">
+          <video autoplay loop muted playsinline class="w-full h-full object-cover">
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-race-car-drifting-on-a-track-41562-large.mp4" type="video/mp4">
+          </video>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-4 sm:p-6 md:p-10">
+            <span class="bg-blue-600 text-white font-orbitron text-[10px] sm:text-xs tracking-widest uppercase px-2.5 py-1 rounded-full w-max mb-2">Inter-College Fest</span>
+            <h3 class="font-orbitron text-xl sm:text-3xl md:text-4xl font-black text-white leading-tight">SCHOOL & COLLEGE CHAMPIONSHIPS</h3>
+          </div>
+        </div>
+
+        <!-- Carousel Navigation Arrows -->
+        <button id="prevBtn" class="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-red-600 text-white p-2.5 sm:p-3 rounded-full backdrop-blur-md border border-white/10 transition opacity-80 sm:opacity-0 sm:group-hover:opacity-100" aria-label="Previous Slide">
+          <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+        </button>
+        <button id="nextBtn" class="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-red-600 text-white p-2.5 sm:p-3 rounded-full backdrop-blur-md border border-white/10 transition opacity-80 sm:opacity-0 sm:group-hover:opacity-100" aria-label="Next Slide">
+          <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+        </button>
+
+        <!-- Indicators -->
+        <div class="absolute bottom-3 right-4 sm:bottom-4 sm:right-6 flex gap-1.5 z-20">
+          <button class="dot w-6 sm:w-8 h-1.5 sm:h-2 rounded-full bg-red-600 transition-all" onclick="goToSlide(0)"></button>
+          <button class="dot w-2.5 sm:w-3 h-1.5 sm:h-2 rounded-full bg-white/40 transition-all" onclick="goToSlide(1)"></button>
+          <button class="dot w-2.5 sm:w-3 h-1.5 sm:h-2 rounded-full bg-white/40 transition-all" onclick="goToSlide(2)"></button>
+        </div>
       </div>
 
-      <!-- Prize + Date -->
-      <div class="flex flex-wrap justify-center gap-4 sm:gap-6 mb-8">
-        <div class="bg-black/60 border border-red-800 rounded-2xl px-6 py-4 sm:px-8 sm:py-5 glow-box">
-          <p class="text-sm text-gray-400">Prize Pool</p>
-          <p class="font-orbitron text-2xl sm:text-3xl font-bold text-yellow-400">₹70K+</p>
+      <!-- Key Info Cards -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-8 sm:mb-10">
+        <div class="glass-panel rounded-2xl p-5 sm:p-6 flex items-center justify-between glow-red">
+          <div>
+            <p class="text-[11px] sm:text-xs uppercase font-bold tracking-widest text-red-400 mb-1">Total Cash Prize</p>
+            <p class="font-orbitron text-2xl sm:text-4xl font-black text-yellow-400">₹70,000+</p>
+          </div>
+          <div class="p-3 bg-yellow-400/10 rounded-xl border border-yellow-400/20 text-yellow-400">
+            <svg class="w-7 h-7 sm:w-8 sm:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+          </div>
         </div>
-        <div class="bg-black/60 border border-red-800 rounded-2xl px-6 py-4 sm:px-8 sm:py-5 glow-box">
-          <p class="text-sm text-gray-400">Date</p>
-          <p class="font-orbitron text-2xl sm:text-3xl font-bold">03 DEC 2026</p>
+
+        <div class="glass-panel rounded-2xl p-5 sm:p-6 flex items-center justify-between glow-red">
+          <div>
+            <p class="text-[11px] sm:text-xs uppercase font-bold tracking-widest text-red-400 mb-1">Race Day</p>
+            <p class="font-orbitron text-2xl sm:text-4xl font-black text-white">03 DEC 2026</p>
+          </div>
+          <div class="p-3 bg-red-600/10 rounded-xl border border-red-600/20 text-red-500">
+            <svg class="w-7 h-7 sm:w-8 sm:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+          </div>
         </div>
       </div>
 
-      <!-- Countdown -->
-      <div id="countdown" class="flex justify-center gap-3 sm:gap-6 mb-8">
-        <div class="bg-red-950/50 border border-red-700 rounded-xl px-4 py-3 min-w-[65px] sm:min-w-[70px]">
-          <div id="days" class="font-orbitron text-2xl sm:text-3xl font-bold">00</div>
-          <div class="text-xs text-gray-400">DAYS</div>
+      <!-- Live Countdown Timer -->
+      <div id="countdown" class="flex justify-center gap-2 sm:gap-4 mb-8 sm:mb-10">
+        <div class="glass-panel rounded-2xl px-3 py-3 sm:px-5 sm:py-4 flex-1 sm:flex-none min-w-[70px] sm:min-w-[90px] text-center border-t-2 border-t-red-600">
+          <div id="days" class="font-orbitron text-2xl sm:text-4xl font-black text-white">00</div>
+          <div class="text-[9px] sm:text-xs font-bold tracking-widest text-gray-400 mt-1">DAYS</div>
         </div>
-        <div class="bg-red-950/50 border border-red-700 rounded-xl px-4 py-3 min-w-[65px] sm:min-w-[70px]">
-          <div id="hours" class="font-orbitron text-2xl sm:text-3xl font-bold">00</div>
-          <div class="text-xs text-gray-400">HOURS</div>
+        <div class="glass-panel rounded-2xl px-3 py-3 sm:px-5 sm:py-4 flex-1 sm:flex-none min-w-[70px] sm:min-w-[90px] text-center border-t-2 border-t-red-600">
+          <div id="hours" class="font-orbitron text-2xl sm:text-4xl font-black text-white">00</div>
+          <div class="text-[9px] sm:text-xs font-bold tracking-widest text-gray-400 mt-1">HOURS</div>
         </div>
-        <div class="bg-red-950/50 border border-red-700 rounded-xl px-4 py-3 min-w-[65px] sm:min-w-[70px]">
-          <div id="minutes" class="font-orbitron text-2xl sm:text-3xl font-bold">00</div>
-          <div class="text-xs text-gray-400">MINS</div>
+        <div class="glass-panel rounded-2xl px-3 py-3 sm:px-5 sm:py-4 flex-1 sm:flex-none min-w-[70px] sm:min-w-[90px] text-center border-t-2 border-t-red-600">
+          <div id="minutes" class="font-orbitron text-2xl sm:text-4xl font-black text-white">00</div>
+          <div class="text-[9px] sm:text-xs font-bold tracking-widest text-gray-400 mt-1">MINS</div>
         </div>
-        <div class="bg-red-950/50 border border-red-700 rounded-xl px-4 py-3 min-w-[65px] sm:min-w-[70px]">
-          <div id="seconds" class="font-orbitron text-2xl sm:text-3xl font-bold">00</div>
-          <div class="text-xs text-gray-400">SECS</div>
+        <div class="glass-panel rounded-2xl px-3 py-3 sm:px-5 sm:py-4 flex-1 sm:flex-none min-w-[70px] sm:min-w-[90px] text-center border-t-2 border-t-red-600">
+          <div id="seconds" class="font-orbitron text-2xl sm:text-4xl font-black text-white">00</div>
+          <div class="text-[9px] sm:text-xs font-bold tracking-widest text-gray-400 mt-1">SECS</div>
         </div>
       </div>
 
       <div class="text-center">
-        <a href="#register" class="inline-block bg-red-600 hover:bg-red-700 text-white font-bold px-8 py-3.5 sm:px-10 sm:py-4 rounded-full text-base sm:text-lg transition transform hover:scale-105">
-          REGISTER NOW
+        <a href="#register" class="inline-block w-full sm:w-auto bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white font-orbitron font-bold tracking-wider px-8 py-4 sm:py-5 rounded-full text-base sm:text-lg shadow-xl shadow-red-900/60 transition transform hover:scale-105 active:scale-95">
+          REGISTER NOW &rarr;
         </a>
       </div>
     </div>
   </section>
 
-  <!-- About -->
-  <section id="about" class="py-14 px-4 bg-black/40">
+  <!-- About Section -->
+  <section id="about" class="py-16 sm:py-20 px-4 relative border-t border-red-900/20 bg-black/40">
     <div class="max-w-4xl mx-auto text-center">
-      <h2 class="font-orbitron text-2xl sm:text-3xl font-bold mb-6">WHAT IS VALORIX?</h2>
-      <p class="text-gray-300 leading-relaxed text-base sm:text-lg">
+      <h2 class="font-orbitron text-2xl sm:text-4xl font-black tracking-wide mb-6">WHAT IS <span class="text-red-600">VALORIX?</span></h2>
+      <p class="text-gray-300 leading-relaxed text-base sm:text-lg font-light px-2">
         The race is about to begin, and this time, there are no limits. Inspired by the adrenaline, 
-        speed, and fierce competition of Formula 1, <span class="text-red-400 font-semibold">Valorix – Full Throttle</span> 
+        speed, and fierce competition of Formula 1, <span class="text-red-500 font-semibold">Valorix – Full Throttle</span> 
         brings together brilliant minds, bold talents, and passionate competitors for an unforgettable experience. 
         Every challenge is a new lap, every decision a strategic move, and every moment an opportunity to rise above the rest.
       </p>
-      <p class="text-gray-400 mt-4 text-base sm:text-lg">
-        Buckle up, embrace the adrenaline, and get ready to go <span class="text-red-500 font-bold">FULL THROTTLE!</span>
+      <p class="text-gray-400 mt-6 text-base sm:text-xl font-orbitron tracking-wider">
+        Buckle up, embrace the adrenaline, and get ready to go <span class="text-red-500 font-black">FULL THROTTLE!</span>
       </p>
     </div>
   </section>
 
-  <!-- Events -->
-  <section id="events" class="py-14 px-4">
+  <!-- Events & Prizes Section -->
+  <section id="events" class="py-16 sm:py-20 px-4">
     <div class="max-w-6xl mx-auto">
-      <h2 class="font-orbitron text-2xl sm:text-3xl font-bold text-center mb-10">EVENTS & PRIZES</h2>
+      <h2 class="font-orbitron text-2xl sm:text-4xl font-black text-center mb-10 sm:mb-12 tracking-wide">
+        EVENTS & <span class="text-yellow-400">PRIZES</span>
+      </h2>
 
-      <div class="grid md:grid-cols-2 gap-6">
+      <div class="grid lg:grid-cols-2 gap-6 sm:gap-8">
         
         <!-- School Events -->
-        <div class="bg-gradient-to-b from-red-950/40 to-black border border-red-900/50 rounded-2xl p-5 sm:p-6">
-          <h3 class="font-orbitron text-lg sm:text-xl font-bold text-center mb-5 text-yellow-400">FOR SCHOOL STUDENTS</h3>
+        <div class="glass-panel rounded-2xl sm:rounded-3xl p-5 sm:p-8">
+          <div class="flex items-center justify-between mb-6 pb-4 border-b border-yellow-500/20">
+            <h3 class="font-orbitron text-lg sm:text-2xl font-bold text-yellow-400">FOR SCHOOL STUDENTS</h3>
+            <span class="text-[10px] sm:text-xs bg-yellow-400/10 border border-yellow-400/30 text-yellow-400 px-2.5 py-1 rounded-full font-mono">School Level</span>
+          </div>
           <div class="space-y-3">
-            <div class="flex justify-between items-center bg-black/50 rounded-xl px-4 py-3">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between bg-black/60 rounded-xl p-3.5 sm:p-4 border border-white/5 hover:border-yellow-500/30 transition gap-2 sm:gap-0">
               <span class="font-medium text-sm sm:text-base">3×3 Football</span>
-              <span class="text-xs sm:text-sm text-gray-300">1st ₹4K • 2nd ₹2K</span>
+              <span class="text-xs text-yellow-400 font-semibold bg-yellow-400/10 px-3 py-1 rounded-lg w-max">1st ₹4K • 2nd ₹2K</span>
             </div>
-            <div class="flex justify-between items-center bg-black/50 rounded-xl px-4 py-3">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between bg-black/60 rounded-xl p-3.5 sm:p-4 border border-white/5 hover:border-yellow-500/30 transition gap-2 sm:gap-0">
               <span class="font-medium text-sm sm:text-base">Business Quiz</span>
-              <span class="text-xs sm:text-sm text-gray-300">1st ₹2.5K • 2nd ₹1.5K</span>
+              <span class="text-xs text-yellow-400 font-semibold bg-yellow-400/10 px-3 py-1 rounded-lg w-max">1st ₹2.5K • 2nd ₹1.5K</span>
             </div>
-            <div class="flex justify-between items-center bg-black/50 rounded-xl px-4 py-3">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between bg-black/60 rounded-xl p-3.5 sm:p-4 border border-white/5 hover:border-yellow-500/30 transition gap-2 sm:gap-0">
               <span class="font-medium text-sm sm:text-base">Group Dance</span>
-              <span class="text-xs sm:text-sm text-gray-300">1st ₹5K • 2nd ₹3K</span>
+              <span class="text-xs text-yellow-400 font-semibold bg-yellow-400/10 px-3 py-1 rounded-lg w-max">1st ₹5K • 2nd ₹3K</span>
             </div>
-            <div class="flex justify-between items-center bg-black/50 rounded-xl px-4 py-3">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between bg-black/60 rounded-xl p-3.5 sm:p-4 border border-white/5 hover:border-yellow-500/30 transition gap-2 sm:gap-0">
               <span class="font-medium text-sm sm:text-base">Spot Dance</span>
-              <span class="text-xs sm:text-sm text-gray-300">1st ₹3K • 2nd ₹1K</span>
+              <span class="text-xs text-yellow-400 font-semibold bg-yellow-400/10 px-3 py-1 rounded-lg w-max">1st ₹3K • 2nd ₹1K</span>
             </div>
-            <div class="flex justify-between items-center bg-black/50 rounded-xl px-4 py-3">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between bg-black/60 rounded-xl p-3.5 sm:p-4 border border-white/5 hover:border-yellow-500/30 transition gap-2 sm:gap-0">
               <span class="font-medium text-sm sm:text-base">Deal / No Deal</span>
-              <span class="text-xs sm:text-sm text-gray-300">1st ₹5K • 2nd ₹3K</span>
+              <span class="text-xs text-yellow-400 font-semibold bg-yellow-400/10 px-3 py-1 rounded-lg w-max">1st ₹5K • 2nd ₹3K</span>
             </div>
-            <div class="flex justify-between items-center bg-black/50 rounded-xl px-4 py-3">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between bg-black/60 rounded-xl p-3.5 sm:p-4 border border-white/5 hover:border-yellow-500/30 transition gap-2 sm:gap-0">
               <span class="font-medium text-sm sm:text-base">E-Football Game</span>
-              <span class="text-xs sm:text-sm text-gray-300">1st ₹2K • 2nd ₹1K</span>
+              <span class="text-xs text-yellow-400 font-semibold bg-yellow-400/10 px-3 py-1 rounded-lg w-max">1st ₹2K • 2nd ₹1K</span>
             </div>
           </div>
         </div>
 
         <!-- College Events -->
-        <div class="bg-gradient-to-b from-blue-950/40 to-black border border-blue-900/50 rounded-2xl p-5 sm:p-6">
-          <h3 class="font-orbitron text-lg sm:text-xl font-bold text-center mb-5 text-cyan-400">FOR COLLEGE STUDENTS</h3>
+        <div class="glass-panel rounded-2xl sm:rounded-3xl p-5 sm:p-8">
+          <div class="flex items-center justify-between mb-6 pb-4 border-b border-cyan-500/20">
+            <h3 class="font-orbitron text-lg sm:text-2xl font-bold text-cyan-400">FOR COLLEGE STUDENTS</h3>
+            <span class="text-[10px] sm:text-xs bg-cyan-400/10 border border-cyan-400/30 text-cyan-400 px-2.5 py-1 rounded-full font-mono">College Level</span>
+          </div>
           <div class="space-y-3">
-            <div class="flex justify-between items-center bg-black/50 rounded-xl px-4 py-3">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between bg-black/60 rounded-xl p-3.5 sm:p-4 border border-white/5 hover:border-cyan-500/30 transition gap-2 sm:gap-0">
               <span class="font-medium text-sm sm:text-base">3×3 Football</span>
-              <span class="text-xs sm:text-sm text-gray-300">1st ₹5K • 2nd ₹3K</span>
+              <span class="text-xs text-cyan-400 font-semibold bg-cyan-400/10 px-3 py-1 rounded-lg w-max">1st ₹5K • 2nd ₹3K</span>
             </div>
-            <div class="flex justify-between items-center bg-black/50 rounded-xl px-4 py-3">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between bg-black/60 rounded-xl p-3.5 sm:p-4 border border-white/5 hover:border-cyan-500/30 transition gap-2 sm:gap-0">
               <span class="font-medium text-sm sm:text-base">Spot Photography</span>
-              <span class="text-xs sm:text-sm text-gray-300">1st ₹2K • 2nd ₹1K</span>
+              <span class="text-xs text-cyan-400 font-semibold bg-cyan-400/10 px-3 py-1 rounded-lg w-max">1st ₹2K • 2nd ₹1K</span>
             </div>
-            <div class="flex justify-between items-center bg-black/50 rounded-xl px-4 py-3">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between bg-black/60 rounded-xl p-3.5 sm:p-4 border border-white/5 hover:border-cyan-500/30 transition gap-2 sm:gap-0">
               <span class="font-medium text-sm sm:text-base">Best Manager</span>
-              <span class="text-xs sm:text-sm text-gray-300">1st ₹4K • 2nd ₹2K</span>
+              <span class="text-xs text-cyan-400 font-semibold bg-cyan-400/10 px-3 py-1 rounded-lg w-max">1st ₹4K • 2nd ₹2K</span>
             </div>
-            <div class="flex justify-between items-center bg-black/50 rounded-xl px-4 py-3">
-              <span class="font-medium text-sm sm:text-base">Meme</span>
-              <span class="text-xs sm:text-sm text-gray-300">1st ₹2K</span>
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between bg-black/60 rounded-xl p-3.5 sm:p-4 border border-white/5 hover:border-cyan-500/30 transition gap-2 sm:gap-0">
+              <span class="font-medium text-sm sm:text-base">Meme Competition</span>
+              <span class="text-xs text-cyan-400 font-semibold bg-cyan-400/10 px-3 py-1 rounded-lg w-max">1st ₹2K</span>
             </div>
-            <div class="flex justify-between items-center bg-black/50 rounded-xl px-4 py-3">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between bg-black/60 rounded-xl p-3.5 sm:p-4 border border-white/5 hover:border-cyan-500/30 transition gap-2 sm:gap-0">
               <span class="font-medium text-sm sm:text-base">Solve the Supply Chain</span>
-              <span class="text-xs sm:text-sm text-gray-300">1st ₹5K • 2nd ₹3K</span>
+              <span class="text-xs text-cyan-400 font-semibold bg-cyan-400/10 px-3 py-1 rounded-lg w-max">1st ₹5K • 2nd ₹3K</span>
             </div>
-            <div class="flex justify-between items-center bg-black/50 rounded-xl px-4 py-3">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between bg-black/60 rounded-xl p-3.5 sm:p-4 border border-white/5 hover:border-cyan-500/30 transition gap-2 sm:gap-0">
               <span class="font-medium text-sm sm:text-base">E-Football Game</span>
-              <span class="text-xs sm:text-sm text-gray-300">1st ₹2K • 2nd ₹1K</span>
+              <span class="text-xs text-cyan-400 font-semibold bg-cyan-400/10 px-3 py-1 rounded-lg w-max">1st ₹2K • 2nd ₹1K</span>
             </div>
           </div>
         </div>
@@ -193,60 +300,119 @@
     </div>
   </section>
 
-  <!-- Coordinators -->
-  <section id="coordinators" class="py-14 px-4 bg-black/40">
+  <!-- Coordinators Section -->
+  <section id="coordinators" class="py-16 sm:py-20 px-4 bg-black/40 border-t border-red-900/20">
     <div class="max-w-5xl mx-auto">
-      <h2 class="font-orbitron text-2xl sm:text-3xl font-bold text-center mb-10">OUR TEAM</h2>
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 text-center">
-        <div class="bg-black/50 border border-red-900/40 rounded-xl p-4 sm:p-5">
-          <p class="text-xs text-gray-400 mb-1">PRINCIPAL</p>
-          <p class="font-semibold text-sm sm:text-base">Prof. Dr. Indulal G.</p>
+      <h2 class="font-orbitron text-2xl sm:text-4xl font-black text-center mb-10 sm:mb-12 tracking-wide">ORGANIZING <span class="text-red-500">TEAM</span></h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 text-center">
+        <div class="glass-panel rounded-2xl p-5 sm:p-6">
+          <p class="text-[11px] text-red-500 font-bold tracking-widest uppercase mb-1.5">PRINCIPAL</p>
+          <p class="font-bold text-base sm:text-lg text-white">Prof. Dr. Indulal G.</p>
         </div>
-        <div class="bg-black/50 border border-red-900/40 rounded-xl p-4 sm:p-5">
-          <p class="text-xs text-gray-400 mb-1">HOD</p>
-          <p class="font-semibold text-sm sm:text-base">Ms. Leenet A Varghese</p>
+        <div class="glass-panel rounded-2xl p-5 sm:p-6">
+          <p class="text-[11px] text-red-500 font-bold tracking-widest uppercase mb-1.5">HOD</p>
+          <p class="font-bold text-base sm:text-lg text-white">Ms. Leenet A Varghese</p>
         </div>
-        <div class="bg-black/50 border border-red-900/40 rounded-xl p-4 sm:p-5">
-          <p class="text-xs text-gray-400 mb-1">PROGRAM COORDINATOR</p>
-          <p class="font-semibold text-sm sm:text-base">Ms. Rose Mary Mathew</p>
+        <div class="glass-panel rounded-2xl p-5 sm:p-6">
+          <p class="text-[11px] text-red-500 font-bold tracking-widest uppercase mb-1.5">PROGRAM COORDINATOR</p>
+          <p class="font-bold text-base sm:text-lg text-white">Ms. Rose Mary Mathew</p>
         </div>
-        <div class="bg-black/50 border border-red-900/40 rounded-xl p-4 sm:p-5">
-          <p class="text-xs text-gray-400 mb-1">STUDENT COORDINATORS</p>
-          <p class="font-semibold text-sm sm:text-base">Adarsh A Reji<br>Neeraja R</p>
+        <div class="glass-panel rounded-2xl p-5 sm:p-6">
+          <p class="text-[11px] text-red-500 font-bold tracking-widest uppercase mb-1.5">STUDENT COORDINATORS</p>
+          <p class="font-bold text-sm sm:text-base text-white">Adarsh A Reji</p>
+          <p class="font-bold text-sm sm:text-base text-white">Neeraja R</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Register -->
-  <section id="register" class="py-14 px-4">
+  <!-- Register Section -->
+  <section id="register" class="py-16 sm:py-20 px-4 relative">
     <div class="max-w-3xl mx-auto text-center">
-      <h2 class="font-orbitron text-2xl sm:text-3xl font-bold mb-4">READY TO RACE?</h2>
-      <p class="text-gray-300 mb-8">Register now and join the competition</p>
+      <h2 class="font-orbitron text-3xl sm:text-5xl font-black mb-3 sm:mb-4">READY TO <span class="text-red-600">RACE?</span></h2>
+      <p class="text-gray-300 text-base sm:text-lg mb-8">Register now and join the ultimate showdown.</p>
       
       <a href="https://docs.google.com/forms/d/e/1FAIpQLSfvI-oR7K2TSnQGDRyYLETd8HzewBf-ARMsBp9daJecBQbKIA/viewform?usp=publish-editor" 
          target="_blank"
-         class="inline-flex items-center justify-center gap-2 bg-red-600 hover:bg-red-700 text-white font-bold px-8 py-4 rounded-full text-lg transition">
-        Register with Google Form
+         class="inline-flex items-center justify-center gap-3 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white font-orbitron font-bold px-8 sm:px-10 py-4 sm:py-5 rounded-full text-base sm:text-lg shadow-2xl shadow-red-900/80 transition transform hover:scale-105 active:scale-95 w-full sm:w-auto">
+        <span>Register with Google Form</span>
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
       </a>
 
-      <div class="mt-12 pt-10 border-t border-red-900/40">
-        <p class="text-gray-400 mb-3">Follow us on Instagram</p>
-        <a href="https://instagram.com/VALORIX26" target="_blank" class="inline-flex items-center gap-2 text-red-400 hover:text-red-300 font-semibold text-lg">
+      <div class="mt-12 sm:mt-16 pt-8 sm:pt-10 border-t border-red-900/30">
+        <p class="text-gray-400 mb-2 text-xs sm:text-sm uppercase tracking-widest">Official Instagram Handle</p>
+        <a href="https://instagram.com/VALORIX26" target="_blank" class="inline-flex items-center gap-2 text-red-400 hover:text-red-300 font-orbitron font-bold text-lg sm:text-xl">
           @VALORIX26
         </a>
-        <p class="text-sm text-gray-500 mt-6">St. Aloysius College, Edathua • Department of Commerce (Logistics)</p>
+        <p class="text-xs sm:text-sm text-gray-500 mt-4 sm:mt-6">St. Aloysius College, Edathua • Department of Commerce (Logistics)</p>
       </div>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="py-6 text-center text-sm text-gray-500 border-t border-red-900/30">
+  <footer class="py-6 text-center text-xs sm:text-sm text-gray-500 border-t border-red-900/30 bg-black">
     <p>© 2026 Valorix • St. Aloysius College, Edathua</p>
   </footer>
 
-  <!-- Countdown Script -->
+  <!-- Scripts -->
   <script>
+    // --- Mobile Navigation Toggle ---
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileLinks = document.querySelectorAll('.mobile-link');
+
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+
+    // --- Carousel Controller ---
+    const slides = document.querySelectorAll('.carousel-item');
+    const dots = document.querySelectorAll('.dot');
+    let currentSlide = 0;
+    let slideInterval = setInterval(nextSlide, 5000);
+
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === index);
+      });
+      dots.forEach((dot, i) => {
+        if (i === index) {
+          dot.className = 'dot w-6 sm:w-8 h-1.5 sm:h-2 rounded-full bg-red-600 transition-all';
+        } else {
+          dot.className = 'dot w-2.5 sm:w-3 h-1.5 sm:h-2 rounded-full bg-white/40 transition-all';
+        }
+      });
+      currentSlide = index;
+    }
+
+    function nextSlide() {
+      showSlide((currentSlide + 1) % slides.length);
+    }
+
+    function prevSlide() {
+      showSlide((currentSlide - 1 + slides.length) % slides.length);
+    }
+
+    function goToSlide(index) {
+      showSlide(index);
+      resetTimer();
+    }
+
+    function resetTimer() {
+      clearInterval(slideInterval);
+      slideInterval = setInterval(nextSlide, 5000);
+    }
+
+    document.getElementById('prevBtn').addEventListener('click', () => { prevSlide(); resetTimer(); });
+    document.getElementById('nextBtn').addEventListener('click', () => { nextSlide(); resetTimer(); });
+
+    // --- Countdown Script ---
     const eventDate = new Date("2026-12-03T09:00:00").getTime();
 
     function updateCountdown() {
@@ -254,7 +420,7 @@
       const distance = eventDate - now;
 
       if (distance < 0) {
-        document.getElementById("countdown").innerHTML = "<p class='text-xl sm:text-2xl font-bold text-red-500'>EVENT IS LIVE!</p>";
+        document.getElementById("countdown").innerHTML = "<p class='text-xl sm:text-2xl font-black font-orbitron text-red-500'>EVENT IS LIVE!</p>";
         return;
       }
 
