@@ -33,6 +33,46 @@
     .glass-panel:hover {
       border-color: rgba(239, 68, 68, 0.5);
     }
+
+/* Unmute Button Style */
+.unmute-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 30;
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(239, 68, 68, 0.5);
+  color: white;
+  padding: 8px 14px;
+  border-radius: 9999px;
+  font-size: 12px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  transition: all 0.2s ease;
+}
+.unmute-btn:hover {
+  background: #dc2626;
+  border-color: #dc2626;
+}
+.unmute-btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+.photo-item {
+  opacity: 0;
+  transition: opacity 0.7s ease-in-out;
+  pointer-events: none;
+}
+.photo-item.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
     .checkered {
       background-image: 
         linear-gradient(45deg, rgba(255,255,255,0.03) 25%, transparent 25%), 
@@ -48,6 +88,16 @@
       pointer-events: none;
     }
     .carousel-item.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    /* Gallery specific */
+    .gallery-item {
+      opacity: 0;
+      transition: opacity 0.7s ease-in-out;
+      pointer-events: none;
+    }
+    .gallery-item.active {
       opacity: 1;
       pointer-events: auto;
     }
@@ -104,12 +154,21 @@
       <!-- Top Media Carousel -->
       <div class="relative w-full aspect-[4/3] sm:aspect-[16/9] md:aspect-[21/9] rounded-2xl sm:rounded-3xl overflow-hidden glass-panel mb-8 sm:mb-10 glow-red-lg group">
         
-        <!-- Slide 1: High Energy Video -->
+             <!-- Slide 1: High Energy Video -->
         <div class="carousel-item active absolute inset-0 w-full h-full">
           <video autoplay loop muted playsinline class="w-full h-full object-cover">
-            <source src="https://assets.mixkit.co/videos/preview/mixkit-sports-car-racing-on-a-track-40342-large.mp4" type="video/mp4">
-            Your browser does not support the video tag.
+            <source src="videos1.mp4" type="video/mp4">
           </video>
+
+          <!-- Unmute Button -->
+          <button class="unmute-btn" onclick="toggleMute(this)">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2"></path>
+            </svg>
+            <span>Unmute</span>
+          </button>
+
           <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-4 sm:p-6 md:p-10">
             <span class="bg-red-600 text-white font-orbitron text-[10px] sm:text-xs tracking-widest uppercase px-2.5 py-1 rounded-full w-max mb-2">High Voltage</span>
             <h3 class="font-orbitron text-xl sm:text-3xl md:text-4xl font-black text-white leading-tight">FEEL THE FULL THROTTLE</h3>
@@ -118,7 +177,7 @@
 
         <!-- Slide 2: Image Poster -->
         <div class="carousel-item absolute inset-0 w-full h-full">
-          <img src="poster.jpg" alt="Valorix Official Poster" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=1600&q=80'">
+          <img src="img1.jpeg" alt="Valorix Official Poster" class="w-full h-full object-cover">
           <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-4 sm:p-6 md:p-10">
             <span class="bg-yellow-500 text-black font-orbitron text-[10px] sm:text-xs font-bold tracking-widest uppercase px-2.5 py-1 rounded-full w-max mb-2">Grand Arena</span>
             <h3 class="font-orbitron text-xl sm:text-3xl md:text-4xl font-black text-white leading-tight">₹70,000+ CASH PRIZE POOL</h3>
@@ -128,13 +187,24 @@
         <!-- Slide 3: Secondary Video -->
         <div class="carousel-item absolute inset-0 w-full h-full">
           <video autoplay loop muted playsinline class="w-full h-full object-cover">
-            <source src="https://assets.mixkit.co/videos/preview/mixkit-race-car-drifting-on-a-track-41562-large.mp4" type="video/mp4">
+            <source src="video2.mp4" type="video/mp4">
           </video>
+
+          <!-- Unmute Button -->
+          <button class="unmute-btn" onclick="toggleMute(this)">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2"></path>
+            </svg>
+            <span>Unmute</span>
+          </button>
+
           <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-4 sm:p-6 md:p-10">
             <span class="bg-blue-600 text-white font-orbitron text-[10px] sm:text-xs tracking-widest uppercase px-2.5 py-1 rounded-full w-max mb-2">Inter-College Fest</span>
             <h3 class="font-orbitron text-xl sm:text-3xl md:text-4xl font-black text-white leading-tight">SCHOOL & COLLEGE CHAMPIONSHIPS</h3>
           </div>
         </div>
+  
 
         <!-- Carousel Navigation Arrows -->
         <button id="prevBtn" class="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-red-600 text-white p-2.5 sm:p-3 rounded-full backdrop-blur-md border border-white/10 transition opacity-80 sm:opacity-0 sm:group-hover:opacity-100" aria-label="Previous Slide">
@@ -151,6 +221,148 @@
           <button class="dot w-2.5 sm:w-3 h-1.5 sm:h-2 rounded-full bg-white/40 transition-all" onclick="goToSlide(2)"></button>
         </div>
       </div>
+
+      <!-- ========== GALLERY SECTION (added here) ========== -->
+      <div class="mb-10 sm:mb-12">
+        <div class="flex items-center justify-between mb-4 px-1">
+          <h3 class="font-orbitron text-xl sm:text-2xl font-black tracking-wide">
+            <span class="text-red-500">EVENT</span> GALLERY
+          </h3>
+          <span class="text-[10px] sm:text-xs text-gray-400 font-mono uppercase tracking-widest">Photos & Videos</span>
+        </div>
+
+        <div class="relative w-full aspect-[4/3] sm:aspect-[16/9] rounded-2xl sm:rounded-3xl overflow-hidden glass-panel glow-red group">
+          
+<!-- Gallery Slide 1 -->
+<div class="gallery-item active absolute inset-0 w-full h-full">
+  <img src="im1.jpg" alt="Gallery 1" class="w-full h-full object-cover">
+  <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+</div>
+
+<!-- Gallery Slide 2 -->
+<div class="gallery-item absolute inset-0 w-full h-full">
+  <img src="im2.jpg" alt="Gallery 2" class="w-full h-full object-cover">
+  <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+</div>
+
+<!-- Gallery Slide 3 (Video) -->
+<div class="gallery-item absolute inset-0 w-full h-full">
+  <video autoplay loop muted playsinline class="w-full h-full object-cover">
+    <source src="video.mp4" type="video/mp4">
+  </video>
+
+  <!-- Unmute Button -->
+  <button class="unmute-btn" onclick="toggleMute(this)">
+    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path>
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2"></path>
+    </svg>
+    <span>Unmute</span>
+  </button>
+
+  <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+</div>
+
+<!-- Gallery Slide 4 -->
+<div class="gallery-item absolute inset-0 w-full h-full">
+  <img src="im3.jpg" alt="Gallery 3" class="w-full h-full object-cover">
+  <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+</div>
+
+<!-- Gallery Slide 5 -->
+<div class="gallery-item absolute inset-0 w-full h-full">
+  <img src="im4.jpg" alt="Gallery 4" class="w-full h-full object-cover">
+  <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+</div>
+
+<!-- Gallery Slide 6 (Video) -->
+<div class="gallery-item absolute inset-0 w-full h-full">
+  <video autoplay loop muted playsinline class="w-full h-full object-cover">
+    <source src="video2.mp4" type="video/mp4">
+  </video>
+  <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+</div>
+
+
+
+
+
+
+          <!-- Gallery Navigation -->
+          <button id="galleryPrev" class="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-red-600 text-white p-2.5 sm:p-3 rounded-full backdrop-blur-md border border-white/10 transition opacity-80 sm:opacity-0 sm:group-hover:opacity-100" aria-label="Previous">
+            <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+          </button>
+          <button id="galleryNext" class="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-red-600 text-white p-2.5 sm:p-3 rounded-full backdrop-blur-md border border-white/10 transition opacity-80 sm:opacity-0 sm:group-hover:opacity-100" aria-label="Next">
+            <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+          </button>
+
+          <!-- Gallery Dots -->
+          <div class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-20" id="galleryDots">
+            <button class="gallery-dot w-6 sm:w-8 h-1.5 sm:h-2 rounded-full bg-red-600 transition-all" data-index="0"></button>
+            <button class="gallery-dot w-2.5 sm:w-3 h-1.5 sm:h-2 rounded-full bg-white/40 transition-all" data-index="1"></button>
+            <button class="gallery-dot w-2.5 sm:w-3 h-1.5 sm:h-2 rounded-full bg-white/40 transition-all" data-index="2"></button>
+            <button class="gallery-dot w-2.5 sm:w-3 h-1.5 sm:h-2 rounded-full bg-white/40 transition-all" data-index="3"></button>
+            <button class="gallery-dot w-2.5 sm:w-3 h-1.5 sm:h-2 rounded-full bg-white/40 transition-all" data-index="4"></button>
+            <button class="gallery-dot w-2.5 sm:w-3 h-1.5 sm:h-2 rounded-full bg-white/40 transition-all" data-index="5"></button>
+          </div>
+        </div>
+
+        <p class="text-center text-xs text-gray-500 mt-3">
+          Tip: Replace the image/video URLs above with your own photos & videos
+        </p>
+      </div>
+      <!-- ========== END GALLERY SECTION ========== -->
+
+<!-- ========== NEW IMAGE GALLERY (3 SLIDES) ========== -->
+<div class="mb-10 sm:mb-12">
+  <div class="flex items-center justify-between mb-4 px-1">
+    <h3 class="font-orbitron text-xl sm:text-2xl font-black tracking-wide">
+      <span class="text-yellow-400">PHOTO</span> GALLERY
+    </h3>
+    <span class="text-[10px] sm:text-xs text-gray-400 font-mono uppercase tracking-widest">3 Moments</span>
+  </div>
+
+  <div class="relative w-full aspect-[4/3] sm:aspect-[16/9] rounded-2xl sm:rounded-3xl overflow-hidden glass-panel glow-red group">
+    
+    <!-- Slide 1 -->
+    <div class="photo-item active absolute inset-0 w-full h-full">
+      <img src="im1.jpeg" alt="Photo 1" class="w-full h-full object-cover">
+      <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="photo-item absolute inset-0 w-full h-full">
+      <img src="im2.jpeg" alt="Photo 2" class="w-full h-full object-cover">
+      <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="photo-item absolute inset-0 w-full h-full">
+      <img src="im3.jpeg" alt="Photo 3" class="w-full h-full object-cover">
+      <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+    </div>
+
+    <!-- Navigation Arrows -->
+    <button id="photoPrev" class="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-red-600 text-white p-2.5 sm:p-3 rounded-full backdrop-blur-md border border-white/10 transition opacity-80 sm:opacity-0 sm:group-hover:opacity-100">
+      <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+      </svg>
+    </button>
+    <button id="photoNext" class="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-red-600 text-white p-2.5 sm:p-3 rounded-full backdrop-blur-md border border-white/10 transition opacity-80 sm:opacity-0 sm:group-hover:opacity-100">
+      <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+      </svg>
+    </button>
+
+    <!-- Dots -->
+    <div class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-20">
+      <button class="photo-dot w-6 sm:w-8 h-1.5 sm:h-2 rounded-full bg-red-600 transition-all" data-index="0"></button>
+      <button class="photo-dot w-2.5 sm:w-3 h-1.5 sm:h-2 rounded-full bg-white/40 transition-all" data-index="1"></button>
+      <button class="photo-dot w-2.5 sm:w-3 h-1.5 sm:h-2 rounded-full bg-white/40 transition-all" data-index="2"></button>
+    </div>
+  </div>
+</div>
+<!-- ========== END NEW IMAGE GALLERY ========== -->
 
       <!-- Key Info Cards -->
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-8 sm:mb-10">
@@ -355,88 +567,242 @@
   </footer>
 
   <!-- Scripts -->
-  <script>
-    // --- Mobile Navigation Toggle ---
-    const menuBtn = document.getElementById('menuBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
-    const mobileLinks = document.querySelectorAll('.mobile-link');
+ <script>
+  // --- Mobile Navigation Toggle ---
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const mobileLinks = document.querySelectorAll('.mobile-link');
 
-    menuBtn.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
+  menuBtn.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+  });
+
+  mobileLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
     });
+  });
 
-    mobileLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        mobileMenu.classList.add('hidden');
-      });
+  // ============================================
+  // MAIN HERO CAROUSEL (with video wait)
+  // ============================================
+  const slides = document.querySelectorAll('.carousel-item');
+  const dots = document.querySelectorAll('.dot');
+  let currentSlide = 0;
+  let slideTimer = null;
+
+  function showSlide(index) {
+    slides.forEach((slide, i) => {
+      slide.classList.toggle('active', i === index);
     });
-
-    // --- Carousel Controller ---
-    const slides = document.querySelectorAll('.carousel-item');
-    const dots = document.querySelectorAll('.dot');
-    let currentSlide = 0;
-    let slideInterval = setInterval(nextSlide, 5000);
-
-    function showSlide(index) {
-      slides.forEach((slide, i) => {
-        slide.classList.toggle('active', i === index);
-      });
-      dots.forEach((dot, i) => {
-        if (i === index) {
-          dot.className = 'dot w-6 sm:w-8 h-1.5 sm:h-2 rounded-full bg-red-600 transition-all';
-        } else {
-          dot.className = 'dot w-2.5 sm:w-3 h-1.5 sm:h-2 rounded-full bg-white/40 transition-all';
-        }
-      });
-      currentSlide = index;
-    }
-
-    function nextSlide() {
-      showSlide((currentSlide + 1) % slides.length);
-    }
-
-    function prevSlide() {
-      showSlide((currentSlide - 1 + slides.length) % slides.length);
-    }
-
-    function goToSlide(index) {
-      showSlide(index);
-      resetTimer();
-    }
-
-    function resetTimer() {
-      clearInterval(slideInterval);
-      slideInterval = setInterval(nextSlide, 5000);
-    }
-
-    document.getElementById('prevBtn').addEventListener('click', () => { prevSlide(); resetTimer(); });
-    document.getElementById('nextBtn').addEventListener('click', () => { nextSlide(); resetTimer(); });
-
-    // --- Countdown Script ---
-    const eventDate = new Date("2026-12-03T09:00:00").getTime();
-
-    function updateCountdown() {
-      const now = new Date().getTime();
-      const distance = eventDate - now;
-
-      if (distance < 0) {
-        document.getElementById("countdown").innerHTML = "<p class='text-xl sm:text-2xl font-black font-orbitron text-red-500'>EVENT IS LIVE!</p>";
-        return;
+    dots.forEach((dot, i) => {
+      if (i === index) {
+        dot.className = 'dot w-6 sm:w-8 h-1.5 sm:h-2 rounded-full bg-red-600 transition-all';
+      } else {
+        dot.className = 'dot w-2.5 sm:w-3 h-1.5 sm:h-2 rounded-full bg-white/40 transition-all';
       }
+    });
+    currentSlide = index;
 
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    // Clear previous timer
+    if (slideTimer) clearTimeout(slideTimer);
 
-      document.getElementById("days").textContent = days.toString().padStart(2, "0");
-      document.getElementById("hours").textContent = hours.toString().padStart(2, "0");
-      document.getElementById("minutes").textContent = minutes.toString().padStart(2, "0");
-      document.getElementById("seconds").textContent = seconds.toString().padStart(2, "0");
+    // Check if current slide has a video
+    const currentVideo = slides[index].querySelector('video');
+
+    if (currentVideo) {
+      // Reset video and play
+      currentVideo.currentTime = 0;
+      currentVideo.play();
+
+      // Move to next slide ONLY when video ends
+      currentVideo.onended = () => {
+        nextSlide();
+      };
+    } else {
+      // Image slide → wait 3.5 seconds then move
+      slideTimer = setTimeout(nextSlide, 3500);
+    }
+  }
+
+  function nextSlide() {
+    showSlide((currentSlide + 1) % slides.length);
+  }
+
+  function prevSlide() {
+    showSlide((currentSlide - 1 + slides.length) % slides.length);
+  }
+
+  function goToSlide(index) {
+    showSlide(index);
+  }
+
+  // Manual controls
+  document.getElementById('prevBtn').addEventListener('click', prevSlide);
+  document.getElementById('nextBtn').addEventListener('click', nextSlide);
+
+  // Start the carousel
+  showSlide(0);
+
+  // ============================================
+  // GALLERY CAROUSEL (with video wait)
+  // ============================================
+  const galleryItems = document.querySelectorAll('.gallery-item');
+  const galleryDots = document.querySelectorAll('.gallery-dot');
+  let currentGallery = 0;
+  let galleryTimer = null;
+
+  function showGallery(index) {
+    galleryItems.forEach((item, i) => {
+      item.classList.toggle('active', i === index);
+    });
+    galleryDots.forEach((dot, i) => {
+      if (i === index) {
+        dot.className = 'gallery-dot w-6 sm:w-8 h-1.5 sm:h-2 rounded-full bg-red-600 transition-all';
+      } else {
+        dot.className = 'gallery-dot w-2.5 sm:w-3 h-1.5 sm:h-2 rounded-full bg-white/40 transition-all';
+      }
+    });
+    currentGallery = index;
+
+    if (galleryTimer) clearTimeout(galleryTimer);
+
+    const currentVideo = galleryItems[index].querySelector('video');
+
+    if (currentVideo) {
+      currentVideo.currentTime = 0;
+      currentVideo.play();
+      currentVideo.onended = () => {
+        nextGallery();
+      };
+    } else {
+      // Image → move after 3 seconds
+      galleryTimer = setTimeout(nextGallery, 3000);
+    }
+  }
+
+  function nextGallery() {
+    showGallery((currentGallery + 1) % galleryItems.length);
+  }
+
+  function prevGallery() {
+    showGallery((currentGallery - 1 + galleryItems.length) % galleryItems.length);
+  }
+
+  document.getElementById('galleryPrev').addEventListener('click', prevGallery);
+  document.getElementById('galleryNext').addEventListener('click', nextGallery);
+
+  galleryDots.forEach(dot => {
+    dot.addEventListener('click', () => {
+      const idx = parseInt(dot.getAttribute('data-index'));
+      showGallery(idx);
+    });
+  });
+
+  // Start gallery
+  showGallery(0);
+
+
+
+// Unmute / Mute toggle function
+function toggleMute(button) {
+  const video = button.parentElement.querySelector('video');
+  if (!video) return;
+
+  if (video.muted) {
+    video.muted = false;
+    button.innerHTML = `
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path>
+      </svg>
+      <span>Mute</span>
+    `;
+  } else {
+    video.muted = true;
+    button.innerHTML = `
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path>
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2"></path>
+      </svg>
+      <span>Unmute</span>
+    `;
+  }
+}
+
+
+// ============================================
+// NEW PHOTO GALLERY (3 slides)
+// ============================================
+const photoItems = document.querySelectorAll('.photo-item');
+const photoDots = document.querySelectorAll('.photo-dot');
+let currentPhoto = 0;
+let photoTimer = null;
+
+function showPhoto(index) {
+  photoItems.forEach((item, i) => {
+    item.classList.toggle('active', i === index);
+  });
+  photoDots.forEach((dot, i) => {
+    if (i === index) {
+      dot.className = 'photo-dot w-6 sm:w-8 h-1.5 sm:h-2 rounded-full bg-red-600 transition-all';
+    } else {
+      dot.className = 'photo-dot w-2.5 sm:w-3 h-1.5 sm:h-2 rounded-full bg-white/40 transition-all';
+    }
+  });
+  currentPhoto = index;
+
+  if (photoTimer) clearTimeout(photoTimer);
+  photoTimer = setTimeout(nextPhoto, 3500); // change every 3.5 seconds
+}
+
+function nextPhoto() {
+  showPhoto((currentPhoto + 1) % photoItems.length);
+}
+
+function prevPhoto() {
+  showPhoto((currentPhoto - 1 + photoItems.length) % photoItems.length);
+}
+
+document.getElementById('photoPrev').addEventListener('click', prevPhoto);
+document.getElementById('photoNext').addEventListener('click', nextPhoto);
+
+photoDots.forEach(dot => {
+  dot.addEventListener('click', () => {
+    const idx = parseInt(dot.getAttribute('data-index'));
+    showPhoto(idx);
+  });
+});
+
+// Start the photo gallery
+showPhoto(0);
+
+  // ============================================
+  // COUNTDOWN
+  // ============================================
+  const eventDate = new Date("2026-12-03T09:00:00").getTime();
+
+  function updateCountdown() {
+    const now = new Date().getTime();
+    const distance = eventDate - now;
+
+    if (distance < 0) {
+      document.getElementById("countdown").innerHTML = "<p class='text-xl sm:text-2xl font-black font-orbitron text-red-500'>EVENT IS LIVE!</p>";
+      return;
     }
 
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
-  </script>
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    document.getElementById("days").textContent = days.toString().padStart(2, "0");
+    document.getElementById("hours").textContent = hours.toString().padStart(2, "0");
+    document.getElementById("minutes").textContent = minutes.toString().padStart(2, "0");
+    document.getElementById("seconds").textContent = seconds.toString().padStart(2, "0");
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+</script>
 </body>
 </html>
