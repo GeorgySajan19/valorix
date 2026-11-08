@@ -847,14 +847,16 @@
   </section>
 
 <!-- Two Centered Images (one below the other) -->
+<!-- Two Centered Images (one below the other) -->
 <div style="display: flex; flex-direction: column; align-items: center; gap: 20px; margin: 40px 0;">
-  <img src="./logos12.jpg" alt="Image 1" style="max-width: 90%; width: 500px; border-radius: 12px; border: 1px solid rgba(180,40,40,0.3);">
-  <img src="./logo11.jpg" alt="Image 2" style="max-width: 90%; width: 500px; border-radius: 12px; border: 1px solid rgba(180,40,40,0.3);">
+  <img src="./logos12.jpg" alt="Image 1" style="max-width: 90%; width: 500px; border-radius: 12px; border: 1px solid rgba(255,80,80,0.6); filter: brightness(1.25) contrast(1.1); transition: filter 0.3s ease, transform 0.3s ease; cursor: pointer;" onmouseover="this.style.filter='brightness(1.5) contrast(1.15)'; this.style.transform='scale(1.02)';" onmouseout="this.style.filter='brightness(1.25) contrast(1.1)'; this.style.transform='scale(1)';">
+  
+  <img src="./logo11.jpg" alt="Image 2" style="max-width: 90%; width: 500px; border-radius: 12px; border: 1px solid rgba(255,80,80,0.6); filter: brightness(1.25) contrast(1.1); transition: filter 0.3s ease, transform 0.3s ease; cursor: pointer;" onmouseover="this.style.filter='brightness(1.5) contrast(1.15)'; this.style.transform='scale(1.02)';" onmouseout="this.style.filter='brightness(1.25) contrast(1.1)'; this.style.transform='scale(1)';">
 </div>
 
 
   <!-- Footer -->
-  <footer class="py-8 text-center text-sm text-gray-500 border-t border-red-900/30 bg-black">
+<footer class="py-8 text-center text-sm text-white border-t border-red-500/80 bg-black shadow-[0_-5px_15px_rgba(239,68,68,0.2)]">
     <p>© 2026 Valorix • St. Aloysius College, Edathua</p>
   </footer>
  
