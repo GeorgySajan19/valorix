@@ -352,10 +352,11 @@
 
       <div class="hidden md:flex gap-8 text-sm font-semibold tracking-wide uppercase text-gray-300">
         <a href="#about" class="hover:text-red-400 transition">About</a>
-            <a href="#gallery" class="hover:text-red-400 transition">Gallery</a>
         <a href="#events" class="hover:text-red-400 transition">Events</a>
+            <a href="#register" class="hover:text-red-400 transition">Register</a>
+           <a href="#gallery" class="hover:text-red-400 transition">Gallery</a>
         <a href="#team" class="hover:text-red-400 transition">Team</a>
-        <a href="#register" class="hover:text-red-400 transition">Register</a>
+    
       </div>
 
       <div class="hidden md:block">
@@ -496,19 +497,12 @@
         </div>
       </div>
 
-      <div class="text-center">
-        <a href="#register" class="inline-block w-full sm:w-auto bg-gradient-to-r from-red-700 to-red-600 hover:from-red-600 hover:to-red-500 text-white font-orbitron font-bold tracking-wider px-10 py-5 rounded-full text-lg shadow-xl shadow-red-900/60 transition transform hover:scale-105">
-          REGISTER NOW →
-        </a>
-      </div>
+   
     </div>
   </section>
-<!-- Two Centered Images (one below the other) -->
-<div style="display: flex; flex-direction: column; align-items: center; gap: 20px; margin: 40px 0;">
-  <img src="./logos12.jpg" alt="Image 1" style="max-width: 90%; width: 500px; border-radius: 12px; border: 1px solid rgba(180,40,40,0.3);">
-  <img src="./logo11.jpg" alt="Image 2" style="max-width: 90%; width: 500px; border-radius: 12px; border: 1px solid rgba(180,40,40,0.3);">
-</div>
+
   <!-- ==================== ABOUT ==================== -->
+
   <section id="about" class="py-20 px-4 border-t border-red-900/20">
     <div class="max-w-4xl mx-auto text-center">
       <h2 class="font-orbitron text-3xl sm:text-5xl font-black tracking-wide mb-8">
@@ -525,50 +519,6 @@
       </p>
     </div>
   </section>
-
-  <!-- ==================== NEW MOVING GALLERY ==================== -->
-  <section id="gallery" class="py-20 px-4 border-t border-red-900/20 overflow-hidden">
-    <div class="max-w-7xl mx-auto">
-      <div class="text-center mb-12">
-        <h2 class="font-orbitron text-3xl sm:text-5xl font-black tracking-wide mb-3">
-          EVENT <span class="text-red-500">GALLERY</span>
-        </h2>
-        <p class="text-gray-400 text-sm uppercase tracking-widest">Click any image to view full size</p>
-      </div>
-
-      <!-- Moving Track -->
-      <div class="relative overflow-hidden py-4">
-        <div class="gallery-track" id="galleryTrack">
-          <!-- First set of images -->
-          <img src="im1.jpeg" alt="Gallery 1" class="gallery-img" onclick="openLightbox(this.src)">
-          <img src="im2.jpeg" alt="Gallery 2" class="gallery-img" onclick="openLightbox(this.src)">
-          <img src="im3.jpeg" alt="Gallery 3" class="gallery-img" onclick="openLightbox(this.src)">
-          <img src="im11.jpeg" alt="Gallery 4" class="gallery-img" onclick="openLightbox(this.src)">
-          <img src="im12.jpeg" alt="Gallery 5" class="gallery-img" onclick="openLightbox(this.src)">
-          <img src="im13.jpeg" alt="Gallery 6" class="gallery-img" onclick="openLightbox(this.src)">
-          <img src="im21.jpeg" alt="Gallery 7" class="gallery-img" onclick="openLightbox(this.src)">
-          <img src="im22.jpeg" alt="Gallery 8" class="gallery-img" onclick="openLightbox(this.src)">
-
-          <!-- Duplicate set for seamless loop -->
-          <img src="im1.jpeg" alt="Gallery 1" class="gallery-img" onclick="openLightbox(this.src)">
-          <img src="im2.jpeg" alt="Gallery 2" class="gallery-img" onclick="openLightbox(this.src)">
-          <img src="im3.jpeg" alt="Gallery 3" class="gallery-img" onclick="openLightbox(this.src)">
-          <img src="im12.jpeg" alt="Gallery 4" class="gallery-img" onclick="openLightbox(this.src)">
-          <img src="im11.jpeg" alt="Gallery 5" class="gallery-img" onclick="openLightbox(this.src)">
-          <img src="im21.jpeg" alt="Gallery 6" class="gallery-img" onclick="openLightbox(this.src)">
-          <img src="im22.jpeg" alt="Gallery 7" class="gallery-img" onclick="openLightbox(this.src)">
-          <img src="im23.jpeg" alt="Gallery 8" class="gallery-img" onclick="openLightbox(this.src)">
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Lightbox -->
-  <div id="lightbox" onclick="closeLightbox()">
-    <span id="lightbox-close">&times;</span>
-    <img id="lightbox-img" src="" alt="Full view">
-  </div>
-
   <!-- ==================== EVENTS ==================== -->
 <section id="events" class="py-20 px-4">
   <div class="max-w-7xl mx-auto">
@@ -723,73 +673,7 @@
     </button>
   </div>
 </div>
-
-  <!-- ==================== TEAM ==================== -->
-  <section id="team" class="py-20 px-4 bg-black/40 border-t border-red-900/20">
-    <div class="max-w-5xl mx-auto">
-      <h2 class="font-orbitron text-3xl sm:text-5xl font-black text-center mb-14 tracking-wide">
-        ORGANIZING <span class="text-red-500">TEAM</span>
-      </h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-        <div class="glass rounded-2xl p-6 text-center">
-          <img src="./iii2.jpeg" alt="Principal" class="w-28 h-28 object-cover rounded-full mx-auto mb-4 border-2 border-red-600/50">
-          <p class="text-[11px] text-red-500 font-bold tracking-widest uppercase mb-1">PRINCIPAL</p>
-          <p class="font-bold text-lg text-white">Prof. Dr. Indulal G.</p>
-        </div>
-        <div class="glass rounded-2xl p-6 text-center">
-          <img src="./photo2.jpg" alt="HOD" class="w-28 h-28 object-cover rounded-full mx-auto mb-4 border-2 border-red-600/50">
-          <p class="text-[11px] text-red-500 font-bold tracking-widest uppercase mb-1">HOD</p>
-          <p class="font-bold text-lg text-white">Ms. Leenet A Varghese</p>
-        </div>
-        <div class="glass rounded-2xl p-6 text-center">
-          <img src="./photo1.jpg" alt="Coordinator" class="w-28 h-28 object-cover rounded-full mx-auto mb-4 border-2 border-red-600/50">
-          <p class="text-[11px] text-red-500 font-bold tracking-widest uppercase mb-1">PROGRAM COORDINATOR</p>
-          <p class="font-bold text-lg text-white">Ms. Rose Mary Mathew</p>
-        </div>
-        <div class="glass rounded-2xl p-6 text-center">
-          <img src="./photo3.jpeg" alt="Student Coordinator" class="w-28 h-28 object-cover rounded-full mx-auto mb-4 border-2 border-red-600/50">
-          <p class="text-[11px] text-red-500 font-bold tracking-widest uppercase mb-1">STUDENT COORDINATOR</p>
-          <p class="font-bold text-lg text-white">Neeraja R</p>
-        </div>
-        <div class="glass rounded-2xl p-6 text-center">
-          <div class="w-28 h-28 rounded-full mx-auto mb-4 border-2 border-red-600/50 bg-red-900/30 flex items-center justify-center text-red-400 font-orbitron text-2xl">AA</div>
-          <p class="text-[11px] text-red-500 font-bold tracking-widest uppercase mb-1">STUDENT COORDINATOR</p>
-          <p class="font-bold text-lg text-white">Adarsh A Reji</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==================== REGISTER ==================== -->
-  <section id="register" class="py-20 px-4">
-    <div class="max-w-3xl mx-auto text-center">
-      <h2 class="font-orbitron text-4xl sm:text-6xl font-black mb-4">
-        READY TO <span class="text-red-500">RACE?</span>
-      </h2>
-      <p class="text-gray-300 text-lg mb-10">Register now and join the ultimate showdown.</p>
-      
-      <div class="flex flex-col sm:flex-row gap-5 justify-center">
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSekstNuMHNlUX3VG52zw9bUbGqFl8sXbIzo75AZchYFkXgEHQ/viewform?usp=header" 
-           target="_blank"
-           class="inline-flex items-center justify-center gap-3 bg-gradient-to-r from-red-700 to-red-600 hover:from-red-600 hover:to-red-500 text-white font-orbitron font-bold px-8 py-5 rounded-full text-lg shadow-2xl shadow-red-900/70 transition transform hover:scale-105">
-          College Students
-        </a>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfvI-oR7K2TSnQGDRyYLETd8HzewBf-ARMsBp9daJecBQbKIA/viewform?usp=publish-editor" 
-           target="_blank"
-           class="inline-flex items-center justify-center gap-3 bg-gradient-to-r from-red-700 to-red-600 hover:from-red-600 hover:to-red-500 text-white font-orbitron font-bold px-8 py-5 rounded-full text-lg shadow-2xl shadow-red-900/70 transition transform hover:scale-105">
-          School Students
-        </a>
-      </div>
-
-      <div class="mt-16 pt-10 border-t border-red-900/30">
-        <p class="text-gray-400 mb-2 text-sm uppercase tracking-widest">Official Instagram</p>
-        <a href="https://instagram.com/VALORIX26" target="_blank" class="inline-flex items-center gap-2 text-red-400 hover:text-red-300 font-orbitron font-bold text-xl">
-          @VALORIX26
-        </a>
-        <p class="text-sm text-gray-500 mt-6">St. Aloysius College, Edathua • Department of Commerce (Logistics)</p>
-      </div>
-    </div>
-  </section>
+ <!-- ==================== LOCATION + QR CODE ==================== -->
 <section class="py-16 px-4 border-t border-red-900/30">
   <div class="max-w-3xl mx-auto text-center">
     
@@ -832,11 +716,149 @@
 
   </div>
 </section>
+
+
+  <!-- ==================== REGISTER ==================== -->
+  <section id="register" class="py-20 px-4">
+    <div class="max-w-3xl mx-auto text-center">
+  
+      <h2 class="font-orbitron text-4xl sm:text-6xl font-black mb-4">
+        READY TO <span class="text-red-500">RACE?</span>
+      </h2>
+      <p class="text-gray-300 text-lg mb-10">Register now and join the ultimate showdown.</p>
+             <div class="text-center">
+        <a href="#register" class="inline-block w-full sm:w-auto bg-gradient-to-r from-red-700 to-red-600 hover:from-red-600 hover:to-red-500 text-white font-orbitron font-bold tracking-wider px-10 py-5 rounded-full text-lg shadow-xl shadow-red-900/60 transition transform hover:scale-105">
+          REGISTER NOW 👇
+        </a>
+      </div>
+      <br><br>
+      <div class="flex flex-col sm:flex-row gap-5 justify-center">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSekstNuMHNlUX3VG52zw9bUbGqFl8sXbIzo75AZchYFkXgEHQ/viewform?usp=header" 
+           target="_blank"
+           class="inline-flex items-center justify-center gap-3 bg-gradient-to-r from-red-700 to-red-600 hover:from-red-600 hover:to-red-500 text-white font-orbitron font-bold px-8 py-5 rounded-full text-lg shadow-2xl shadow-red-900/70 transition transform hover:scale-105">
+          College Students
+        </a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfvI-oR7K2TSnQGDRyYLETd8HzewBf-ARMsBp9daJecBQbKIA/viewform?usp=publish-editor" 
+           target="_blank"
+           class="inline-flex items-center justify-center gap-3 bg-gradient-to-r from-red-700 to-red-600 hover:from-red-600 hover:to-red-500 text-white font-orbitron font-bold px-8 py-5 rounded-full text-lg shadow-2xl shadow-red-900/70 transition transform hover:scale-105">
+          School Students
+        </a>
+      </div>
+
+      <div class="mt-16 pt-10 border-t border-red-900/30">
+        <p class="text-gray-400 mb-2 text-sm uppercase tracking-widest">Official Instagram</p>
+        <a href="https://instagram.com/VALORIX26" target="_blank" class="inline-flex items-center gap-2 text-red-400 hover:text-red-300 font-orbitron font-bold text-xl">
+          @VALORIX26
+        </a>
+        <p class="text-sm text-gray-500 mt-6">St. Aloysius College, Edathua • Department of Commerce (Logistics)</p>
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+  <!-- ==================== NEW MOVING GALLERY ==================== -->
+  <section id="gallery" class="py-20 px-4 border-t border-red-900/20 overflow-hidden">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="font-orbitron text-3xl sm:text-5xl font-black tracking-wide mb-3">
+          EVENT <span class="text-red-500">GALLERY</span>
+        </h2>
+        <p class="text-gray-400 text-sm uppercase tracking-widest">Click any image to view full size</p>
+      </div>
+
+      <!-- Moving Track -->
+      <div class="relative overflow-hidden py-4">
+        <div class="gallery-track" id="galleryTrack">
+          <!-- First set of images -->
+          <img src="im1.jpeg" alt="Gallery 1" class="gallery-img" onclick="openLightbox(this.src)">
+          <img src="im2.jpeg" alt="Gallery 2" class="gallery-img" onclick="openLightbox(this.src)">
+          <img src="im3.jpeg" alt="Gallery 3" class="gallery-img" onclick="openLightbox(this.src)">
+          <img src="im11.jpeg" alt="Gallery 4" class="gallery-img" onclick="openLightbox(this.src)">
+          <img src="im12.jpeg" alt="Gallery 5" class="gallery-img" onclick="openLightbox(this.src)">
+          <img src="im13.jpeg" alt="Gallery 6" class="gallery-img" onclick="openLightbox(this.src)">
+          <img src="im21.jpeg" alt="Gallery 7" class="gallery-img" onclick="openLightbox(this.src)">
+          <img src="im22.jpeg" alt="Gallery 8" class="gallery-img" onclick="openLightbox(this.src)">
+
+          <!-- Duplicate set for seamless loop -->
+          <img src="im1.jpeg" alt="Gallery 1" class="gallery-img" onclick="openLightbox(this.src)">
+          <img src="im2.jpeg" alt="Gallery 2" class="gallery-img" onclick="openLightbox(this.src)">
+          <img src="im3.jpeg" alt="Gallery 3" class="gallery-img" onclick="openLightbox(this.src)">
+          <img src="im12.jpeg" alt="Gallery 4" class="gallery-img" onclick="openLightbox(this.src)">
+          <img src="im11.jpeg" alt="Gallery 5" class="gallery-img" onclick="openLightbox(this.src)">
+          <img src="im21.jpeg" alt="Gallery 6" class="gallery-img" onclick="openLightbox(this.src)">
+          <img src="im22.jpeg" alt="Gallery 7" class="gallery-img" onclick="openLightbox(this.src)">
+          <img src="im23.jpeg" alt="Gallery 8" class="gallery-img" onclick="openLightbox(this.src)">
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Lightbox -->
+  <div id="lightbox" onclick="closeLightbox()">
+    <span id="lightbox-close">&times;</span>
+    <img id="lightbox-img" src="" alt="Full view">
+  </div>
+
+  
+
+
+
+
+
+  <!-- ==================== TEAM ==================== -->
+  <section id="team" class="py-20 px-4 bg-black/40 border-t border-red-900/20">
+    <div class="max-w-5xl mx-auto">
+      <h2 class="font-orbitron text-3xl sm:text-5xl font-black text-center mb-14 tracking-wide">
+        ORGANIZING <span class="text-red-500">TEAM</span>
+      </h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <div class="glass rounded-2xl p-6 text-center">
+          <img src="./iii2.jpeg" alt="Principal" class="w-28 h-28 object-cover rounded-full mx-auto mb-4 border-2 border-red-600/50">
+          <p class="text-[11px] text-red-500 font-bold tracking-widest uppercase mb-1">PRINCIPAL</p>
+          <p class="font-bold text-lg text-white">Prof. Dr. Indulal G.</p>
+        </div>
+        <div class="glass rounded-2xl p-6 text-center">
+          <img src="./photo2.jpg" alt="HOD" class="w-28 h-28 object-cover rounded-full mx-auto mb-4 border-2 border-red-600/50">
+          <p class="text-[11px] text-red-500 font-bold tracking-widest uppercase mb-1">HOD</p>
+          <p class="font-bold text-lg text-white">Ms. Leenet A Varghese</p>
+          <p>(Assistant Professor)</p>
+          <p>+91 9495543813</p>
+        </div>
+        <div class="glass rounded-2xl p-6 text-center">
+          <img src="./photo1.jpg" alt="Coordinator" class="w-28 h-28 object-cover rounded-full mx-auto mb-4 border-2 border-red-600/50">
+          <p class="text-[11px] text-red-500 font-bold tracking-widest uppercase mb-1">PROGRAM COORDINATOR</p>
+          <p class="font-bold text-lg text-white">Ms. Rose Mary Mathew</p>
+          <p>(Assistant Professor)</p>
+          <p>+91 9747747566</p>
+        </div>
+        <div class="glass rounded-2xl p-6 text-center">
+          <img src="./photo3.jpeg" alt="Student Coordinator" class="w-28 h-28 object-cover rounded-full mx-auto mb-4 border-2 border-red-600/50">
+          <p class="text-[11px] text-red-500 font-bold tracking-widest uppercase mb-1">STUDENT COORDINATOR</p>
+          <p class="font-bold text-lg text-white">Neeraja R</p>
+        </div>
+        <div class="glass rounded-2xl p-6 text-center">
+          <div class="w-28 h-28 rounded-full mx-auto mb-4 border-2 border-red-600/50 bg-red-900/30 flex items-center justify-center text-red-400 font-orbitron text-2xl">AA</div>
+          <p class="text-[11px] text-red-500 font-bold tracking-widest uppercase mb-1">STUDENT COORDINATOR</p>
+          <p class="font-bold text-lg text-white">Adarsh A Reji</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- Two Centered Images (one below the other) -->
+<div style="display: flex; flex-direction: column; align-items: center; gap: 20px; margin: 40px 0;">
+  <img src="./logos12.jpg" alt="Image 1" style="max-width: 90%; width: 500px; border-radius: 12px; border: 1px solid rgba(180,40,40,0.3);">
+  <img src="./logo11.jpg" alt="Image 2" style="max-width: 90%; width: 500px; border-radius: 12px; border: 1px solid rgba(180,40,40,0.3);">
+</div>
+
+
   <!-- Footer -->
   <footer class="py-8 text-center text-sm text-gray-500 border-t border-red-900/30 bg-black">
     <p>© 2026 Valorix • St. Aloysius College, Edathua</p>
   </footer>
-  <!-- ==================== LOCATION + QR CODE ==================== -->
+ 
 
 
   <!-- ==================== SCRIPTS ==================== -->
